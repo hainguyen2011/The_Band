@@ -20,7 +20,7 @@
                 <li><a href="#band">Band</a></li>
                 <li><a href="#tour">Tour</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li class="js-hide-show-subnav"><a href="#">More<i class="arrow-down ti-angle-down"></i></a>
+                <li><a href="#">More<i class="arrow-down ti-angle-down"></i></a>
                     <ul class="subnav">
                         <li><a href="#">Merchandise</a></li>
                         <li><a href="#">Extras</a></li>
@@ -105,7 +105,7 @@
                                 <p class="place-headding">New York</p>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class="background-black buy-ticket-btn js-buy-ticket s-full-width">Buy Tickets</button>
+                                <button class="background-black buy-ticket-btn s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -115,7 +115,7 @@
                                 <p class="place-headding">New York</p>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class="background-black buy-ticket-btn js-buy-ticket s-full-width">Buy Tickets</button>
+                                <button class="background-black buy-ticket-btn s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -125,7 +125,7 @@
                                 <p class="place-headding">New York</p>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class="background-black buy-ticket-btn js-buy-ticket s-full-width">Buy Tickets</button>
+                                <button class="background-black buy-ticket-btn s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                                     <input type="text" name="" placeholder="Name" required id="" class="form-control">
                                 </div>
                                 <div class="col col-2 s-col-1 s-mt-8">
-                                    <input type="text" name="" placeholder="Email" required id="" class="form-control">
+                                    <input type="email" name="" placeholder="Email" required id="" class="form-control">
                                 </div>
                             </div>
                             
@@ -232,11 +232,16 @@
         }
 
         var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+        var showHideSubnav = document.querySelector('#nav .subnav');
         for(var i=0;i<menuItems.length;i++){
             menuItems[i].onclick = function(event){
                 var isMenuParent = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav');
                 if(isMenuParent){
                     event.preventDefault();
+                    if(header.clientWidth<740){
+                        if(showHideSubnav.style.position === 'initial') showHideSubnav.style.position = 'absolute';
+                        else showHideSubnav.style.position = 'initial';
+                    }
                 }
                 else {
                     header.style.height = null;
@@ -244,14 +249,8 @@
             }
         }
 
-        var buttonSubnav = document.querySelector('.js-hide-show-subnav');
-        var subnav = document.querySelector('.subnav');
-        buttonSubnav.onclick = function(){
-            if(subnav.style.position === 'absolute' && header.clientWidth<=740) subnav.style.position = 'initial';
-            else subnav.style.position = 'absolute';
-        }
 
-        
+
 
 
     </script>
@@ -287,7 +286,7 @@
                 modal.classList.add('open')
             }
         }
-
+        //
 
         closeModal.addEventListener('click', hideModal)
         modal.addEventListener('click', hideModal)

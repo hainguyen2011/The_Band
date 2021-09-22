@@ -39,7 +39,7 @@
 }
 
 
-@media (max-width: 740px) {
+@media (max-width: 739px) {
     .s-full-width {
         width: 100%;
     }
@@ -68,9 +68,6 @@
         display: inline-block;
     }
 
-    #nav .subnav{
-        position: initial;
-    } 
 
     #nav .subnav a {
         background-color: #000;
@@ -79,6 +76,7 @@
         padding: 0px 40px;
         line-height: 46px;
     }
+
 
     #search .search-btn {
         display: none;
